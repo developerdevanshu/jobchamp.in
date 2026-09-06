@@ -1,0 +1,1615 @@
+/*
+Theme Name: GeneratePress
+Theme URI: https://generatepress.com
+Author: Tom Usborne
+Author URI: https://generatepress.com/about
+Description: Jobchamp Custom Theme - Inspired by Jobcore.in
+Version: 3.6.1
+Text Domain: generatepress
+*/
+
+/* ==========================================================================
+   1. ROOT VARIABLES & CSS RESET
+   ========================================================================== */
+:root {
+	--jc-primary: #0056D2;
+	--jc-primary-hover: #0044a8;
+	--jc-primary-light: #eff6ff;
+	--jc-dark: #0f172a;
+	--jc-body: #334155;
+	--jc-muted: #64748b;
+	--jc-light-gray: #f8fafc;
+	--jc-border: #e2e8f0;
+	--jc-border-light: #f1f5f9;
+	--jc-footer-bg: #16222f;
+	--jc-footer-card: #202d3d;
+	--jc-footer-text: #94a3b8;
+	--jc-whatsapp: #25D366;
+	--jc-instagram: #E1306C;
+	--jc-facebook: #1877F2;
+	--jc-linkedin: #0077b5;
+	--jc-twitter: #000000;
+	--jc-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: var(--jc-font);
+	font-size: 15px;
+	line-height: 1.6;
+	color: var(--jc-body);
+	background-color: #ffffff;
+	margin: 0;
+	padding: 0;
+	-webkit-font-smoothing: antialiased;
+}
+
+a {
+	color: var(--jc-primary);
+	text-decoration: none;
+	transition: color 0.2s ease, transform 0.2s ease;
+}
+
+a:hover {
+	color: var(--jc-primary-hover);
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* ==========================================================================
+   2. HEADER & NAVIGATION (Jobcore Style)
+   ========================================================================== */
+.jobchamp-header {
+	background-color: #ffffff;
+	border-bottom: 1px solid var(--jc-border-light);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+}
+
+.jobchamp-header-container {
+	max-width: 1380px;
+	margin: 0 auto;
+	padding: 0 16px;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.jobchamp-branding .jobchamp-logo-text {
+	font-size: 26px;
+	font-weight: 800;
+	letter-spacing: -0.5px;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	color: var(--jc-primary);
+}
+
+.jobchamp-branding .jobchamp-logo-text span {
+	color: var(--jc-primary);
+}
+
+.jobchamp-branding img {
+	max-height: 44px;
+	width: auto;
+}
+
+/* Nav Menu */
+.jobchamp-navigation {
+	display: flex;
+	align-items: center;
+}
+
+.jobchamp-nav-menu {
+	display: flex;
+	align-items: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	gap: 24px;
+}
+
+.jobchamp-nav-menu li {
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+.jobchamp-nav-menu li a {
+	font-size: 15px;
+	font-weight: 600;
+	color: var(--jc-dark);
+	padding: 8px 2px;
+	display: block;
+	transition: color 0.2s ease;
+}
+
+.jobchamp-nav-menu li a:hover,
+.jobchamp-nav-menu li.current-menu-item>a {
+	color: var(--jc-primary);
+}
+
+/* Search Box */
+.jobchamp-header-search {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.jobchamp-search-toggle {
+	background: transparent;
+	border: none;
+	color: var(--jc-dark);
+	cursor: pointer;
+	padding: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	transition: background-color 0.2s, color 0.2s;
+}
+
+.jobchamp-search-toggle:hover {
+	background-color: var(--jc-light-gray);
+	color: var(--jc-primary);
+}
+
+.jobchamp-search-dropdown {
+	display: none;
+	position: absolute;
+	right: 0;
+	top: 45px;
+	background: #ffffff;
+	border: 1px solid var(--jc-border);
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+	border-radius: 8px;
+	padding: 12px;
+	width: 300px;
+	z-index: 1001;
+}
+
+.jobchamp-search-dropdown.active {
+	display: block;
+}
+
+.jobchamp-search-form {
+	display: flex;
+	gap: 8px;
+}
+
+.jobchamp-search-field {
+	flex: 1;
+	border: 1px solid var(--jc-border);
+	border-radius: 6px;
+	padding: 8px 12px;
+	font-size: 14px;
+	outline: none;
+}
+
+.jobchamp-search-field:focus {
+	border-color: var(--jc-primary);
+}
+
+.jobchamp-search-submit {
+	background: var(--jc-primary);
+	color: #ffffff;
+	border: none;
+	border-radius: 6px;
+	padding: 8px 14px;
+	font-size: 13px;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.jobchamp-search-submit:hover {
+	background: var(--jc-primary-hover);
+}
+
+/* Mobile Toggle */
+.jobchamp-mobile-menu-toggle {
+	display: none;
+	flex-direction: column;
+	gap: 5px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 6px;
+}
+
+.jobchamp-mobile-menu-toggle span {
+	width: 24px;
+	height: 2px;
+	background: var(--jc-dark);
+	border-radius: 2px;
+	transition: 0.3s;
+}
+
+/* ==========================================================================
+   3. LAYOUT: MAIN CONTENT + SIDEBAR CONTAINER (Max-Width 1280px & Flush Edges)
+   ========================================================================== */
+.site.grid-container.jobchamp-page-wrapper,
+#page.jobchamp-page-wrapper,
+#page {
+	max-width: 1380px !important;
+	margin: 24px auto 0 auto !important;
+	padding: 0 16px !important;
+	float: none !important;
+	background: transparent !important;
+}
+
+.jobchamp-site-content,
+#content.jobchamp-site-content,
+#content,
+.site-content {
+	display: flex !important;
+	flex-direction: row !important;
+	gap: 48px !important;
+	justify-content: space-between !important;
+	align-items: flex-start !important;
+	width: 100% !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	background: transparent !important;
+}
+
+/* Main Content Column (Starts Flush Left) */
+#primary.jobchamp-content-area,
+#primary,
+.jobchamp-content-area,
+.content-area {
+	flex: 1 1 0% !important;
+	width: auto !important;
+	max-width: calc(100% - 372px) !important;
+	min-width: 0 !important;
+	float: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+/* Inner elements inside #primary MUST take full 100% width with 0 padding */
+.site-main,
+.jobchamp-site-main,
+.jobchamp-posts-listing,
+.jobchamp-single-article,
+.separate-containers .inside-article,
+.one-container .inside-article,
+.separate-containers .page-header,
+.one-container .site-content,
+.inside-article {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+/* Right Sidebar (Starts Flush Right) */
+#right-sidebar,
+.widget-area.sidebar.is-right-sidebar,
+.inside-right-sidebar.jobchamp-sidebar,
+.sidebar {
+	flex: 0 0 324px !important;
+	width: 324px !important;
+	max-width: 324px !important;
+	min-width: 324px !important;
+	float: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+/* ==========================================================================
+   4. CATEGORY ARCHIVE HEADER BANNER: [ ⚡ FRESHERS ]────────────────────────●
+   ========================================================================== */
+.jobchamp-category-header-wrap {
+	display: flex !important;
+	align-items: center !important;
+	margin: 0 0 18px 0 !important;
+	padding: 0 !important;
+	gap: 0 !important;
+	width: 100% !important;
+}
+
+.jobchamp-category-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	border: 2px solid #000000;
+	border-radius: 30px;
+	padding: 5px 22px;
+	font-weight: 800;
+	font-size: 17px;
+	color: #000000;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	background: #ffffff;
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.jobchamp-category-pill svg {
+	fill: #000000;
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
+}
+
+.jobchamp-category-line-bar {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.jobchamp-category-line {
+	flex: 1;
+	height: 2px;
+	background: #000000;
+}
+
+.jobchamp-category-dot {
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background: #000000;
+	flex-shrink: 0;
+}
+
+/* ==========================================================================
+   5. ARCHIVE & HOME POST LISTING (Auto-fit Thumbnails & Wide Text Area)
+   ========================================================================== */
+.jobchamp-posts-listing {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.jobchamp-post-card {
+	display: block;
+	width: 100%;
+	padding: 22px 0 24px 0;
+	border-bottom: 1px solid #e5e7eb;
+	background: transparent;
+	margin: 0;
+}
+
+.jobchamp-post-card:first-child {
+	padding-top: 0;
+}
+
+.jobchamp-post-card-inner {
+	display: flex;
+	flex-direction: row;
+	gap: 26px;
+	align-items: flex-start;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+/* Left Thumbnail Card (Auto-Fits Full-Width & Large Uploads with zero clipping) */
+.jobchamp-post-thumb {
+	flex: 0 0 260px;
+	width: 260px;
+	height: 155px;
+	border-radius: 6px;
+	overflow: hidden;
+	position: relative;
+	background-color: #ffffff;
+	border: 1px solid #e2e8f0;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.jobchamp-post-thumb a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.jobchamp-thumb-img {
+	width: 100% !important;
+	height: 100% !important;
+	max-width: 100% !important;
+	max-height: 100% !important;
+	object-fit: contain !important;
+	object-position: center !important;
+	transition: transform 0.25s ease;
+	display: block;
+}
+
+.jobchamp-post-thumb:hover .jobchamp-thumb-img {
+	transform: scale(1.03);
+}
+
+.jobchamp-thumb-placeholder {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+	padding: 16px;
+	text-align: center;
+}
+
+.jobchamp-placeholder-category {
+	font-size: 11px;
+	font-weight: 700;
+	color: var(--jc-primary);
+	text-transform: uppercase;
+	margin-bottom: 6px;
+}
+
+.jobchamp-placeholder-title {
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--jc-dark);
+	line-height: 1.3;
+	margin-bottom: 8px;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.jobchamp-placeholder-btn {
+	display: inline-block;
+	background: var(--jc-primary);
+	color: #ffffff;
+	font-size: 11px;
+	font-weight: 700;
+	padding: 4px 10px;
+	border-radius: 4px;
+}
+
+/* Right Details Column */
+.jobchamp-post-details {
+	flex: 1;
+	min-width: 0;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.jobchamp-category-tag {
+	margin: 0 0 6px 0;
+	display: block;
+}
+
+.jobchamp-cat-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 13px;
+	font-weight: 800;
+	color: var(--jc-primary);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.jobchamp-lightning-icon {
+	flex-shrink: 0;
+	width: 13px;
+	height: 13px;
+	fill: var(--jc-primary);
+}
+
+.jobchamp-post-title {
+	font-size: 19px;
+	font-weight: 700;
+	line-height: 1.34;
+	margin: 0 0 8px 0;
+	letter-spacing: -0.2px;
+	color: var(--jc-dark);
+}
+
+.jobchamp-post-title a {
+	color: var(--jc-dark);
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.jobchamp-post-title a:hover {
+	color: var(--jc-primary);
+}
+
+.jobchamp-post-excerpt {
+	font-size: 14px;
+	color: #4b5563;
+	line-height: 1.55;
+	margin: 0 0 10px 0;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.jobchamp-post-excerpt p {
+	margin: 0;
+}
+
+/* Meta Row (Single Line) */
+.jobchamp-post-meta {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--jc-dark);
+	flex-wrap: nowrap;
+	white-space: nowrap;
+	margin: 0;
+	padding: 0;
+}
+
+.jobchamp-meta-author {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	color: var(--jc-dark);
+	font-weight: 600;
+}
+
+.jobchamp-meta-author a {
+	color: var(--jc-dark);
+}
+
+.jobchamp-verified-badge {
+	flex-shrink: 0;
+	vertical-align: middle;
+	fill: #0084ff;
+	width: 15px;
+	height: 15px;
+}
+
+.jobchamp-meta-divider {
+	color: #cbd5e1;
+	margin: 0 2px;
+	flex-shrink: 0;
+}
+
+.jobchamp-meta-date {
+	color: #6b7280;
+	font-weight: 500;
+	flex-shrink: 0;
+}
+
+/* ==========================================================================
+   6. PAGINATION (Jobcore Style)
+   ========================================================================== */
+.nav-links,
+.jobchamp-pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	margin: 36px 0 20px 0;
+	flex-wrap: wrap;
+}
+
+.nav-links .page-numbers {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 38px;
+	height: 38px;
+	padding: 0 12px;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--jc-dark);
+	background: #ffffff;
+	border: 1px solid #cbd5e1;
+	border-radius: 4px;
+	text-decoration: none;
+	transition: all 0.2s ease;
+}
+
+.nav-links .page-numbers.current {
+	background: var(--jc-primary);
+	color: #ffffff;
+	border-color: var(--jc-primary);
+	font-weight: 700;
+}
+
+.nav-links .page-numbers:hover:not(.current) {
+	background: var(--jc-light-gray);
+	border-color: #94a3b8;
+	color: var(--jc-primary);
+}
+
+.nav-links .dots {
+	border: none;
+	background: transparent;
+}
+
+/* ==========================================================================
+   7. SINGLE POST VIEW (Title & Meta above Featured Image)
+   ========================================================================== */
+.jobchamp-single-article {
+	padding: 0;
+}
+
+/* Top Ad Box */
+.jobchamp-single-top-ad {
+	margin-bottom: 20px;
+}
+
+.jobchamp-ad-box-sm {
+	background-color: var(--jc-light-gray);
+	border: 1px dashed #cbd5e1;
+	border-radius: 6px;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #94a3b8;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+
+.jobchamp-single-category {
+	margin-bottom: 10px;
+}
+
+.jobchamp-single-title {
+	font-size: 27px;
+	font-weight: 800;
+	line-height: 1.3;
+	color: var(--jc-dark);
+	margin: 0 0 16px 0;
+}
+
+.jobchamp-single-meta-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 16px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid var(--jc-border-light);
+	flex-wrap: wrap;
+	gap: 14px;
+}
+
+.jobchamp-author-info {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.jobchamp-author-avatar img {
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.jobchamp-author-name {
+	font-size: 14px;
+	font-weight: 700;
+	color: var(--jc-dark);
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+
+.jobchamp-single-date {
+	font-size: 12.5px;
+	color: var(--jc-muted);
+	margin-top: 2px;
+}
+
+.jobchamp-single-share {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.jobchamp-share-btn {
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	cursor: pointer;
+	transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.jobchamp-share-btn:hover {
+	transform: scale(1.08);
+	opacity: 0.92;
+}
+
+.jobchamp-share-btn.share-whatsapp {
+	background: var(--jc-whatsapp);
+	color: #ffffff;
+}
+
+.jobchamp-share-btn.share-native {
+	background: var(--jc-dark);
+	color: #ffffff;
+}
+
+/* Featured Image (Full width below title & metadata) */
+.jobchamp-single-featured-image {
+	width: 100%;
+	max-width: 100%;
+	margin: 0 0 28px 0;
+	border-radius: 8px;
+	overflow: hidden;
+	border: 1px solid var(--jc-border);
+	background: #ffffff;
+}
+
+.jobchamp-single-featured-image img {
+	width: 100%;
+	height: auto;
+	display: block;
+	object-fit: cover;
+}
+
+/* Post Content Typography */
+.jobchamp-single-content {
+	font-size: 16px;
+	line-height: 1.8;
+	color: var(--jc-body);
+}
+
+.jobchamp-single-content h2,
+.jobchamp-single-content h3,
+.jobchamp-single-content h4 {
+	color: var(--jc-dark);
+	font-weight: 700;
+	margin-top: 32px;
+	margin-bottom: 14px;
+}
+
+.jobchamp-single-content p {
+	margin-bottom: 20px;
+}
+
+.jobchamp-single-content ul,
+.jobchamp-single-content ol {
+	padding-left: 24px;
+	margin-bottom: 20px;
+}
+
+.jobchamp-single-content li {
+	margin-bottom: 8px;
+}
+
+.jobchamp-single-content table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 24px 0;
+}
+
+.jobchamp-single-content th,
+.jobchamp-single-content td {
+	padding: 12px 16px;
+	border: 1px solid var(--jc-border);
+	text-align: left;
+}
+
+.jobchamp-single-content th {
+	background: var(--jc-light-gray);
+	font-weight: 700;
+	color: var(--jc-dark);
+}
+
+.jobchamp-post-tags {
+	margin-top: 32px;
+	padding-top: 16px;
+	border-top: 1px solid var(--jc-border-light);
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.jobchamp-tags-label {
+	font-weight: 700;
+	font-size: 14px;
+	color: var(--jc-dark);
+}
+
+.jobchamp-tag-badge {
+	background: var(--jc-light-gray);
+	border: 1px solid var(--jc-border);
+	padding: 4px 10px;
+	border-radius: 4px;
+	font-size: 12px;
+	color: var(--jc-muted);
+}
+
+.jobchamp-tag-badge:hover {
+	background: var(--jc-primary-light);
+	color: var(--jc-primary);
+}
+
+/* Single Post Mid & Bottom Ad Boxes */
+.jobchamp-single-mid-ad {
+	margin: 20px 0 28px 0;
+	width: 100%;
+}
+
+.jobchamp-single-bottom-ad {
+	margin: 28px 0 32px 0;
+	width: 100%;
+}
+
+.jobchamp-ad-box-md {
+	background-color: var(--jc-light-gray);
+	border: 1px dashed #cbd5e1;
+	border-radius: 6px;
+	height: 110px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #94a3b8;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	width: 100%;
+}
+
+/* Related Posts Section (Jobcore 2x2 Grid) */
+.jobchamp-related-posts-section {
+	margin-top: 32px;
+	margin-bottom: 24px;
+	width: 100%;
+}
+
+.jobchamp-related-header {
+	background: #003dbb;
+	background: linear-gradient(90deg, #003dbb 0%, #0056d2 100%);
+	border-radius: 6px;
+	padding: 10px 20px;
+	text-align: center;
+	margin-bottom: 24px;
+	box-shadow: 0 2px 8px rgba(0, 61, 187, 0.2);
+}
+
+.jobchamp-related-title {
+	font-size: 19px;
+	font-weight: 800;
+	color: #ffffff;
+	margin: 0;
+	text-transform: none;
+	letter-spacing: 0.3px;
+}
+
+.jobchamp-related-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 22px 28px;
+	width: 100%;
+}
+
+.jobchamp-related-card {
+	display: flex;
+	gap: 16px;
+	align-items: flex-start;
+}
+
+.jobchamp-related-thumb {
+	flex: 0 0 130px;
+	width: 130px;
+	height: 85px;
+	border-radius: 6px;
+	overflow: hidden;
+	border: 1px solid #e2e8f0;
+	background: #ffffff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.jobchamp-related-thumb a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.jobchamp-related-img {
+	width: 100% !important;
+	height: 100% !important;
+	object-fit: contain !important;
+	object-position: center !important;
+	display: block;
+	transition: transform 0.25s ease;
+}
+
+.jobchamp-related-card:hover .jobchamp-related-img {
+	transform: scale(1.05);
+}
+
+.jobchamp-related-placeholder {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #f1f5f9;
+	color: #94a3b8;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.jobchamp-related-info {
+	flex: 1;
+	min-width: 0;
+}
+
+.jobchamp-related-cat {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 12px;
+	font-weight: 800;
+	color: var(--jc-primary);
+	text-transform: uppercase;
+	margin-bottom: 4px;
+}
+
+.jobchamp-related-card-title {
+	font-size: 14.5px;
+	font-weight: 700;
+	line-height: 1.35;
+	margin: 0 0 6px 0;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+.jobchamp-related-card-title a {
+	color: var(--jc-dark);
+	transition: color 0.2s ease;
+}
+
+.jobchamp-related-card-title a:hover {
+	color: var(--jc-primary);
+}
+
+.jobchamp-related-meta {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 11.5px;
+	color: #64748b;
+	font-weight: 500;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   8. RIGHT SIDEBAR (Jobcore Style with Updated Social Buttons)
+   ========================================================================== */
+.inside-right-sidebar.jobchamp-sidebar {
+	padding: 0;
+}
+
+.jobchamp-sidebar-widget {
+	margin-bottom: 32px;
+}
+
+.jobchamp-sidebar-widget:last-child {
+	margin-bottom: 0;
+}
+
+/* Ad Box */
+.jobchamp-ad-box {
+	background: var(--jc-light-gray);
+	border: 1px dashed #cbd5e1;
+	border-radius: 8px;
+	height: 270px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #94a3b8;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+
+/* Pill Header */
+.jobchamp-pill-header-wrap {
+	text-align: center;
+	margin-bottom: 16px;
+}
+
+.jobchamp-pill-header {
+	display: inline-block;
+	padding: 6px 32px;
+	border: 1.5px solid var(--jc-dark);
+	border-radius: 30px;
+	font-size: 15px;
+	font-weight: 700;
+	color: var(--jc-dark);
+	background: #ffffff;
+}
+
+/* Follow Us Social Buttons (WhatsApp, Instagram, Facebook, LinkedIn) */
+.jobchamp-social-buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.jobchamp-social-action-btn {
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 0 20px;
+	border-radius: 30px;
+	font-size: 14.5px;
+	font-weight: 700;
+	color: #ffffff !important;
+	text-decoration: none;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.jobchamp-social-action-btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.jobchamp-social-action-btn.btn-whatsapp {
+	background: var(--jc-whatsapp);
+}
+
+.jobchamp-social-action-btn.btn-instagram {
+	background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.jobchamp-social-action-btn.btn-facebook {
+	background: var(--jc-facebook);
+}
+
+.jobchamp-social-action-btn.btn-linkedin {
+	background: var(--jc-linkedin);
+}
+
+/* Recent Posts List */
+.jobchamp-recent-posts-list {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.jobchamp-recent-item {
+	display: flex;
+	gap: 14px;
+	align-items: center;
+	padding-bottom: 14px;
+	border-bottom: 1px solid var(--jc-border-light);
+}
+
+.jobchamp-recent-item:last-child {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
+.jobchamp-recent-thumb {
+	flex: 0 0 70px;
+	width: 70px;
+	height: 52px;
+	border-radius: 6px;
+	overflow: hidden;
+	background: var(--jc-light-gray);
+	border: 1px solid var(--jc-border);
+}
+
+.jobchamp-recent-thumb a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.jobchamp-recent-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.jobchamp-recent-placeholder {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 11px;
+	font-weight: 700;
+	color: var(--jc-muted);
+	background: #e2e8f0;
+}
+
+.jobchamp-recent-info {
+	flex: 1;
+	min-width: 0;
+}
+
+.jobchamp-recent-title {
+	font-size: 13.5px;
+	font-weight: 700;
+	line-height: 1.35;
+	margin: 0 0 4px 0;
+}
+
+.jobchamp-recent-title a {
+	color: var(--jc-dark);
+	transition: color 0.2s ease;
+}
+
+.jobchamp-recent-title a:hover {
+	color: var(--jc-primary);
+}
+
+.jobchamp-recent-date {
+	font-size: 12px;
+	color: var(--jc-muted);
+	font-weight: 500;
+}
+
+/* ==========================================================================
+   9. WAVE DARK FOOTER (Jobcore Style)
+   ========================================================================== */
+.jobchamp-footer-wrapper {
+	margin-top: 60px;
+	background: var(--jc-footer-bg);
+	color: var(--jc-footer-text);
+	position: relative;
+}
+
+.jobchamp-footer-wave {
+	color: var(--jc-footer-bg);
+	line-height: 0;
+	transform: translateY(-98%);
+	width: 100%;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.jobchamp-footer-wave svg {
+	width: 100%;
+	height: 50px;
+	display: block;
+}
+
+.jobchamp-footer-main {
+	padding: 50px 0 40px 0;
+}
+
+.jobchamp-footer-container {
+	max-width: 1380px;
+	margin: 0 auto;
+	padding: 0 16px;
+	display: grid;
+	grid-template-columns: 1.3fr 0.8fr 0.8fr 1.3fr;
+	gap: 40px;
+}
+
+/* Col 1 */
+.jobchamp-footer-brand {
+	font-size: 26px;
+	font-weight: 800;
+	margin: 0 0 16px 0;
+	letter-spacing: -0.5px;
+}
+
+.jobchamp-footer-brand span:first-child {
+	color: #ffffff;
+}
+
+.jobchamp-footer-brand span:last-child {
+	color: #3b82f6;
+}
+
+.jobchamp-footer-desc {
+	font-size: 13.5px;
+	line-height: 1.7;
+	color: var(--jc-footer-text);
+	margin: 0;
+}
+
+/* Col 2 & 3 */
+.jobchamp-footer-heading {
+	font-size: 16px;
+	font-weight: 700;
+	color: #ffffff;
+	margin: 0 0 20px 0;
+}
+
+.jobchamp-footer-links {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.jobchamp-footer-links li a {
+	color: #cbd5e1;
+	font-size: 14px;
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.jobchamp-footer-links li a:hover {
+	color: #3b82f6;
+}
+
+/* Col 4 (Social Card) */
+.jobchamp-footer-social-card {
+	background: var(--jc-footer-card);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 10px;
+	padding: 20px;
+}
+
+.jobchamp-social-card-header {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	margin-bottom: 16px;
+}
+
+.jobchamp-rss-icon {
+	color: #ffffff;
+	flex-shrink: 0;
+}
+
+.jobchamp-social-card-text strong {
+	display: block;
+	font-size: 14px;
+	color: #ffffff;
+}
+
+.jobchamp-social-card-text p {
+	font-size: 12px;
+	color: var(--jc-footer-text);
+	margin: 2px 0 0 0;
+}
+
+.jobchamp-social-card-icons {
+	display: flex;
+	gap: 10px;
+}
+
+.social-icon-box {
+	width: 36px;
+	height: 36px;
+	border-radius: 6px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: #ffffff !important;
+	text-decoration: none;
+	transition: transform 0.2s ease;
+}
+
+.social-icon-box:hover {
+	transform: scale(1.08);
+}
+
+.social-icon-box.box-whatsapp {
+	background: var(--jc-whatsapp);
+}
+
+.social-icon-box.box-instagram {
+	background: var(--jc-instagram);
+}
+
+.social-icon-box.box-facebook {
+	background: var(--jc-facebook);
+}
+
+.social-icon-box.box-linkedin {
+	background: var(--jc-linkedin);
+}
+
+/* Bottom Copyright */
+.jobchamp-footer-bottom {
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+	padding: 22px 0;
+	width: 100%;
+	text-align: center;
+}
+
+.jobchamp-footer-bottom-inner {
+	max-width: 1380px;
+	margin: 0 auto;
+	padding: 0 16px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 100%;
+}
+
+.jobchamp-copyright {
+	text-align: center !important;
+	margin: 0 auto !important;
+	font-size: 13.5px;
+	color: #64748b;
+	width: 100%;
+}
+
+.jobchamp-copyright strong {
+	color: #94a3b8;
+}
+
+/* ==========================================================================
+   10. UNIVERSAL SHARE MODAL POPUP
+   ========================================================================== */
+.jobchamp-share-modal-overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.55);
+	z-index: 99999;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+}
+
+.jobchamp-share-modal-overlay.active {
+	display: flex;
+}
+
+.jobchamp-share-modal-content {
+	background: #ffffff;
+	border-radius: 12px;
+	max-width: 440px;
+	width: 100%;
+	padding: 24px;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+	animation: jcModalIn 0.25s ease-out;
+}
+
+@keyframes jcModalIn {
+	from {
+		opacity: 0;
+		transform: translateY(12px) scale(0.96);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+.jobchamp-share-modal-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid var(--jc-border-light);
+}
+
+.jobchamp-share-modal-header h3 {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 700;
+	color: var(--jc-dark);
+}
+
+.jobchamp-share-modal-close {
+	background: transparent;
+	border: none;
+	font-size: 24px;
+	color: var(--jc-muted);
+	cursor: pointer;
+	padding: 0 4px;
+	line-height: 1;
+}
+
+.jobchamp-share-modal-icons {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 14px;
+	margin-bottom: 20px;
+}
+
+.share-grid-btn {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 6px;
+	text-decoration: none;
+	color: var(--jc-dark);
+	font-size: 12px;
+	font-weight: 600;
+	transition: transform 0.2s;
+}
+
+.share-grid-btn:hover {
+	transform: translateY(-3px);
+	color: var(--jc-primary);
+}
+
+.share-icon-circle {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #ffffff;
+}
+
+.bg-whatsapp {
+	background: var(--jc-whatsapp);
+}
+
+.bg-facebook {
+	background: var(--jc-facebook);
+}
+
+.bg-linkedin {
+	background: var(--jc-linkedin);
+}
+
+.bg-twitter {
+	background: #000000;
+}
+
+.jobchamp-share-copy-box {
+	display: flex;
+	gap: 8px;
+	background: var(--jc-light-gray);
+	border: 1px solid var(--jc-border);
+	border-radius: 8px;
+	padding: 6px;
+}
+
+.jobchamp-share-copy-box input {
+	flex: 1;
+	border: none;
+	background: transparent;
+	padding: 6px 10px;
+	font-size: 13px;
+	outline: none;
+	color: var(--jc-body);
+}
+
+.jobchamp-share-copy-box button {
+	background: var(--jc-primary);
+	color: #ffffff;
+	border: none;
+	border-radius: 6px;
+	padding: 8px 16px;
+	font-size: 13px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+/* ==========================================================================
+   11. RESPONSIVE DESIGN (Media Queries)
+   ========================================================================== */
+@media (max-width: 991px) {
+
+	.jobchamp-site-content,
+	#content.jobchamp-site-content {
+		flex-direction: column !important;
+	}
+
+	#primary.jobchamp-content-area,
+	.jobchamp-content-area,
+	.jobchamp-sidebar,
+	#right-sidebar {
+		flex: 0 0 100% !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		min-width: 100% !important;
+	}
+
+	.jobchamp-footer-container {
+		grid-template-columns: 1fr 1fr;
+		gap: 30px;
+	}
+}
+
+@media (max-width: 768px) {
+	.jobchamp-mobile-menu-toggle {
+		display: flex;
+	}
+
+	.jobchamp-navigation {
+		display: none;
+		position: absolute;
+		top: 70px;
+		left: 0;
+		right: 0;
+		background: #ffffff;
+		border-bottom: 1px solid var(--jc-border);
+		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+		padding: 16px 20px;
+		z-index: 999;
+	}
+
+	.jobchamp-navigation.active {
+		display: block;
+	}
+
+	.jobchamp-nav-menu {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 12px;
+	}
+
+	.jobchamp-post-card-inner {
+		flex-direction: column;
+	}
+
+	.jobchamp-post-thumb {
+		width: 100%;
+		flex: 0 0 190px;
+		height: 190px;
+	}
+
+	.jobchamp-footer-container {
+		grid-template-columns: 1fr;
+		gap: 28px;
+	}
+
+	.jobchamp-single-title {
+		font-size: 22px;
+	}
+
+	.jobchamp-post-meta {
+		flex-wrap: wrap;
+		white-space: normal;
+	}
+
+	.jobchamp-related-grid {
+		grid-template-columns: 1fr;
+		gap: 18px;
+	}
+}
